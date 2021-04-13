@@ -15,6 +15,9 @@ class App extends React.Component {
     // const fn = () => console.log(true);
     // const nameInputFn = (name) => console.log(name);
     // const people = ["Mikolaj", "Paulina", "Daniel"];
+    this.state = {
+      counter: 1,
+    };
   }
 
   render() {
