@@ -1,5 +1,5 @@
 import React from "react";
-import InputPassword from "./Input/InputPassword";
+import InputNewFruitName from "./Input/InputNewFruitName";
 
 class Fruit extends React.Component {
   constructor(props) {
@@ -11,9 +11,18 @@ class Fruit extends React.Component {
         { id: 3, name: "Orange", isVisible: true },
       ],
       title: "Wooooooooooooo",
-      password: "",
+      newFruitName: "",
     };
     this.state.nextId = this.state.fruits.length + 1;
+  }
+
+  shouldComponentUpdate() {
+    console.log("shouldComponentUpdate");
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
   }
 
   // funkcja z Component Lifecycle
@@ -32,13 +41,14 @@ class Fruit extends React.Component {
     // ALTERNATIVE:
     const newFruit = {
       id: this.state.nextId,
-      name: "Mango",
+      name: this.state.newFruitName,
       isVisible: true,
     };
     const newFruits = [...this.state.fruits, newFruit];
     this.setState({
       fruits: newFruits,
       nextId: newFruits.length + 1,
+      newFruitName: "",
     });
   };
 
@@ -48,8 +58,8 @@ class Fruit extends React.Component {
     this.setState({ fruits: newFruits });
   };
 
-  updatePassword = (password) => {
-    this.setState({ password });
+  setNewFruitName = (newFruitName) => {
+    this.setState({ newFruitName });
   };
 
   removeFruitById = (id) => {
@@ -63,9 +73,12 @@ class Fruit extends React.Component {
         <h1>{this.state.title}</h1>
         <button onClick={this.addFruit}>Add a fruit</button>
         <button onClick={this.removeFruit}>Remove last fruit</button>
-        <InputPassword fn={this.updatePassword} />
+        <InputNewFruitName
+          value={this.state.newFruitName}
+          fn={this.setNewFruitName}
+        />
 
-        <p>{this.state.password}</p>
+        {/* <p>{this.state.password}</p> */}
         <ul>
           {this.state.fruits.map(({ id, name, isVisible }) => {
             return (
