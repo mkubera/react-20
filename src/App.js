@@ -5,6 +5,7 @@ import "./App.css";
 // import Button from "./Components/Button";
 // import NameInput from "./Components/NameInput";
 import Fruits from "./Components/Fruits";
+import Footer from "./Components/Footer/Footer";
 // shift+alt+up/down -- duplikat linii
 // ctrl+d -- wybiera taki sam ciag tekstu
 // ctrl+shift+k -- kasuje linie
@@ -37,6 +38,7 @@ class App extends React.Component {
           ({ code }) => code === "THB" || code === "USD" || code === "AUD"
         );
         this.setState({ currencies: chosenCurrencies });
+        // this.setState((state) => ({ currencies: chosenCurrencies}))
       })
       .catch((err) => this.setState({ joke: err }));
   }
@@ -72,6 +74,7 @@ class App extends React.Component {
         {/* <Zebras /> */}
         {/* <Button onClickFn={fn} />
       <NameInput onInputFn={nameInputFn} /> */}
+        <Footer dateFrom={1999} dateTo={2021} />
       </div>
     );
   }
