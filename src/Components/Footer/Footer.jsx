@@ -1,7 +1,7 @@
 const Footer = ({ dateFrom, dateTo }) => {
   return (
     <footer>
-      Copyright {dateFrom}-{dateTo}.
+      Copyright {dateFrom}-{dateTo}. All rights reserved. Lorem.
     </footer>
   );
 };
